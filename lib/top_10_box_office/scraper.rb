@@ -4,7 +4,7 @@ class Top10BoxOffice::Scraper
 		Nokogiri::HTML(open('http://www.imdb.com' + url))
 	end
 
-	def make_movies
+	def get_movies
 		doc = get_page('/chart/boxoffice')
 		Top10BoxOffice::Movie.set_date(doc.css('div#boxoffice h4').text)
 
@@ -19,4 +19,20 @@ class Top10BoxOffice::Scraper
 		end
 	end
 
+	def get_movie_details(url)
+		doc = get_page(url)
+
+		{
+			imdb_rating: doc.css('span[itemprop=ratingValue]').text + " / 10",
+			actors: doc.css('span[itemprop=actors]').collect { |actor| actor.css('a').text }.join(", "),
+			director: doc.css('span[itemprop=director] a').text,
+			genre: doc.css('div[itemprop=genre] a').collect { |genre| genre.text.strip }.join(", "),
+			content_rating: doc.css('span[itemprop=contentRating]').text,
+			runtime: doc.css('time[itemprop=duration]')[1].text,
+			summary: doc.css('div.summary_text').text.strip
+		}
+	end
+
 end
+
+
