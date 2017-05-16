@@ -34,5 +34,3 @@ class Top10BoxOffice::Scraper
 	end
 
 end
-
-
