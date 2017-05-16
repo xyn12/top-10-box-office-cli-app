@@ -23,7 +23,7 @@ class Top10BoxOffice::Scraper
     doc = get_page(url)
 
     {
-      imdb_rating: doc.css('span[itemprop=ratingValue]').text + " / 10",
+      imdb_rating: doc.css('span[itemprop=ratingValue]').text + "/10",
       actors: doc.css('span[itemprop=actors]').collect { |actor| actor.css('a').text }.join(", "),
       director: doc.css('span[itemprop=director] a').text,
       genre: doc.css('div[itemprop=genre] a').collect { |genre| genre.text.strip }.join(", "),
