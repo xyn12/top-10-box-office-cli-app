@@ -6,7 +6,7 @@ require 'top_10_box_office/version'
 Gem::Specification.new do |spec|
   spec.name          = "top_10_box_office"
   spec.version       = Top10BoxOffice::VERSION
-  spec.authors       = ["Zain"]
+  spec.authors       = ["xyn"]
   spec.email         = ["xyn@halai.us"]
 
   spec.summary       = %q{This gem lists the current top box office movies and their respective details.}
@@ -32,4 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "nokogiri", "~> 1.7"
+  spec.add_development_dependency "require_all", "~> 1.4"
+  spec.add_development_dependency "colorize", "~> 0.8"
 end
