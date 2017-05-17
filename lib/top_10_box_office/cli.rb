@@ -11,8 +11,8 @@ class Top10BoxOffice::CLI
 
   def start
     puts "Please enter a command:".light_green
-    puts " - 'list' to view a list top box office movies"
-    puts " - 'quit' to quit the program"
+    puts " - Enter 'L' to view a list of the current top box office movies"
+    puts " - Enter 'Q' to quit the program"
     print "\n['L'ist / 'Q'uit] $ ".light_red
     input = gets.chomp.downcase
     puts
@@ -20,7 +20,9 @@ class Top10BoxOffice::CLI
       print_list
       movie_information
     elsif input.downcase == "q"
-      puts "Have a great day!\n".light_magenta
+      puts "Goodbye!"
+      puts "...and keep the change, ya filthy animal!".light_magenta
+      puts
     else
       start
     end
