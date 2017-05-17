@@ -3,7 +3,7 @@ require_relative '../config/environment'
 require 'bundler/setup'
 
 puts "----------------------------------------------------------------------------"
-puts "                              Welcome to                                    "
+puts "                              Welcome to                                    ".light_green
 puts "----------------------------------------------------------------------------"
 puts
 puts " _____             _  ___    ____               ___   __  __ _                  "

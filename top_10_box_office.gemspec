@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Zain"]
   spec.email         = ["xyn@halai.us"]
 
-  spec.summary       = %q{Fix_me: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Fix_me: Write a longer description or delete this line.}
+  spec.summary       = %q{This gem lists the current top box office movies and their respective details.}
   spec.homepage      = "https://github.com/xyn12/top-10-box-office-cli-app"
   spec.license       = "MIT"
 
