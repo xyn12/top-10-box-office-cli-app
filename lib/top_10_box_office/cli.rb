@@ -6,6 +6,7 @@ class Top10BoxOffice::CLI
     puts "                     #{Top10BoxOffice::Movie.date}                          ".light_green
     puts "----------------------------------------------------------------------------"
     puts
+
     start
   end
 
@@ -16,6 +17,7 @@ class Top10BoxOffice::CLI
     print "\n['L'ist / 'Q'uit] $ ".light_red
     input = gets.chomp.downcase
     puts
+
     if input == "l" || input == "list"
       print_list
       movie_information
@@ -32,12 +34,14 @@ class Top10BoxOffice::CLI
     puts "\nEnter movie number for more details:".light_green
     print "[1 - 10] $ ".light_red
     input = gets.chomp.to_i
+
     input.between?(1, 10) ? print_movie_details(input) : movie_information 
   end
 
   def print_list
     puts "               Title                     Weekend         Gross         Weeks".light_green
     puts
+
     Top10BoxOffice::Movie.all.each.with_index do |movie, idx|
       print " " if idx < 9
       puts "#{idx + 1}.  #{movie.title.ljust(35)} #{movie.weekend_total.ljust(15)} #{movie.gross.ljust(15)} #{movie.weeks}"
@@ -45,16 +49,19 @@ class Top10BoxOffice::CLI
   end
 
   def print_movie_details(input)
+    system("clear")
     movie_details = Top10BoxOffice::Movie.find_or_get_details(input - 1)
-    puts "\nTitle:".light_blue + " #{movie_details.movie.title}"
-    puts "IMDB Rating:".light_blue + "  #{movie_details.imdb_rating}"
-    puts "Stars:".light_blue + "  #{movie_details.actors}"
-    puts "Director:".light_blue + "  #{movie_details.director}"
-    puts "Genre:".light_blue + "  #{movie_details.genre}"
-    puts "Content Rating:".light_blue + "  #{movie_details.content_rating}"
-    puts "Runtime:".light_blue + "  #{movie_details.runtime}"
-    puts "Summary:".light_blue + "  #{movie_details.summary}"
+
+    puts movie_details.movie.title.bold.light_green
+    puts "\nIMDB Rating:".light_blue + " #{movie_details.imdb_rating}"
+    puts "\nStars:".light_blue + " #{movie_details.actors}"
+    puts "\nDirector:".light_blue + " #{movie_details.director}"
+    puts "\nGenre:".light_blue + " #{movie_details.genre}"
+    puts "\nContent Rating:".light_blue + " #{movie_details.content_rating}"
+    puts "\nRuntime:".light_blue + " #{movie_details.runtime}"
+    puts "\nSummary:".light_blue + " #{movie_details.summary}"
     puts "\n"
+
     start
   end
 end
